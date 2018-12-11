@@ -34,4 +34,27 @@ void Albero<tipo>::Postorder(NodoAlbero<tipo>* T) {
 }
 
 template <class tipo>
+void Albero<tipo>::InserimentoIterativo(tipo x) {
+	NodoAlbero<tipo>* q = T;
+	while (T != nullptr) {
+		if (x > q->GetInfo()) {
+			q = q->GetRightLink();
+		}
+		else {
+			q = q->GetLeftLink();
+		}
+	}
+	NodoAlbero temp = new NodoAlbero(x);
+	if (x > q->GetInfo()) {
+		q->SetRightLink(temp);
+		q = q->GetRightLink();
+	}
+	else {
+		q->SetLeftLink(temp);
+		q = q->GetLeftLink();
+	}
+	q->SetInfo(x);
+}
+
+template <class tipo>
 Albero<tipo>::~Albero() {}
