@@ -12,7 +12,7 @@ public:
 	void Inorder(NodoAlbero<tipo>*);
 	void Postorder(NodoAlbero<tipo>*);
 	void InserimentoIterativo(tipo);
-	void InserimentoRicorsivo(tipo);
+	void InserimentoRicorsivo(tipo, NodoAlbero<tipo>*);
 	~Albero();
 };
 
