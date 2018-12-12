@@ -57,4 +57,23 @@ void Albero<tipo>::InserimentoIterativo(tipo x) {
 }
 
 template <class tipo>
+void Albero<tipo>::InserisciRicorsivo(tipo x, NodoAlbero<tipo>* T){
+	if (T == 0){
+		T = new NodoAlbero<tipo>(x);
+	}
+	else{
+		if(x > T->getInfo()){
+			InserisciRicorsivo(x, T->getRightLink());
+		}
+		else{
+			InserisciRicorsivo(x, T->getLeftLink());
+		}
+	}
+}
+
+template <class tipo>
+void Albero<tipo>::InserisciRicorsivoPublic(tipo x){
+	InserisciRicorsivo(x, T);
+}
+template <class tipo>
 Albero<tipo>::~Albero() {}
