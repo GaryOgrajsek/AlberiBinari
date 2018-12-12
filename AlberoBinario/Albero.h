@@ -5,6 +5,7 @@ template <class tipo>
 class Albero{
 private:
 	NodoAlbero<tipo>* T;
+	void InserimentoRicorsivo(tipo, NodoAlbero<tipo>*);
 
 public:
 	Albero();
@@ -12,7 +13,7 @@ public:
 	void Inorder(NodoAlbero<tipo>*);
 	void Postorder(NodoAlbero<tipo>*);
 	void InserimentoIterativo(tipo);
-	void InserimentoRicorsivo(tipo, NodoAlbero<tipo>*);
+	void InserimentoRicorsivoPublic(tipo);
 	~Albero();
 };
 
