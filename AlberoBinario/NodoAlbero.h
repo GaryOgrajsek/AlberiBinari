@@ -3,10 +3,11 @@ template<class tipo>
 class NodoAlbero{
 private:
 	tipo info;
-	NodoAlbero<tipo>* leftLink, rightLink;
+	NodoAlbero<tipo>* leftLink, *rightLink;
 
 public:
 	NodoAlbero();
+	NodoAlbero(tipo);
 	tipo GetInfo();
 	NodoAlbero<tipo>* GetLeftLink();
 	NodoAlbero<tipo>* GetRightLink();
@@ -15,4 +16,6 @@ public:
 	void SetRightLink(NodoAlbero<tipo>*);
 	~NodoAlbero();
 };
+
+
 
