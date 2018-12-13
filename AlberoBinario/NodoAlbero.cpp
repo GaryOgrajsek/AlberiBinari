@@ -1,7 +1,15 @@
 #include "NodoAlbero.h"
 
 template <class tipo>
-NodoAlbero<tipo>::NodoAlbero(){}
+NodoAlbero<tipo>::NodoAlbero(){
+	leftLink = rightLink = 0;
+}
+
+template <class tipo>
+NodoAlbero<tipo>::NodoAlbero(tipo x) {
+	info = x;
+	leftLink = rightLink = 0;
+}
 
 template <class tipo>
 tipo NodoAlbero<tipo>::GetInfo() {
