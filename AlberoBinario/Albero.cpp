@@ -1,6 +1,15 @@
 #include "Albero.h"
 using namespace std;
 
+template<class tipo>
+bool AlberoUguale(Albero<tipo> A1, Albero<tipo> A2) {
+	return(A1.Converti() == A2.Converti());
+}
+template<class tipo>
+Albero<tipo> operator =(Albero<tipo>& A1, Albero<tipo> A2) {
+	cout << "MACRON";
+}
+
 template <class tipo>
 Albero<tipo>::Albero() {
 	T = nullptr;
@@ -117,6 +126,59 @@ int Albero<tipo>::ContaNodiFoglia(int &nNodiFoglia, NodoAlbero<tipo>* T) {
 		nNodiFoglia++;
 	}
 	return nNodiFoglia;
+}
+
+template <class tipo>
+bool Albero<tipo>::Cerca(tipo x, NodoAlbero<tipo>* T) {
+	if (T->GetInfo() == x) {
+		return true;
+	}
+	if (T->GetLeftLink() == T->GetRightLink() == nullptr) {
+		return false;
+	}
+	if (x > T->GetInfo()) {
+		Cerca(x, T->GetRightLink());
+	}
+	else {
+		Cerca(x, T->GetLeftLink());
+	}
+}
+
+template <class tipo>
+bool Albero<tipo>::Cerca(tipo x) {
+	return Cerca(x, T);
+}
+
+template <class tipo>
+string Albero<tipo>::Converti(string & stringa, NodoAlbero<tipo>* T) {
+if (T != nullptr) {
+		stringa += (to_string(T->GetInfo()) + "(");
+		if (T->GetLeftLink() != nullptr) {
+			Converti(stringa, T->GetLeftLink());
+			stringa += ",";
+		}if (T->GetRightLink() != nullptr) {
+			Converti(stringa, T->GetRightLink());
+		}
+	}
+	stringa += ")";
+	return stringa;
+}
+
+template <class tipo>
+string Albero<tipo>::Converti() {
+	string stringa = "";
+	Converti(stringa, T);
+	return stringa;
+}
+
+template <class tipo>
+void Albero<tipo>::InserisciNnodi(int n) {
+	tipo x;
+	for (n; n > 0; n--) {
+		cout << "Numerino: ";
+		cin >> x;
+		InserisciRicorsivo(x);
+	}
 }
 
 template <class tipo>
