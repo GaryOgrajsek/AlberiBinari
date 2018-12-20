@@ -8,7 +8,6 @@ using namespace std;
 template <class tipo>
 class Albero{
 	friend bool AlberoUguale(Albero<tipo>, Albero<tipo>);
-	friend Albero<tipo> operator=(Albero<tipo>&, Albero<tipo>);
 private:
 	NodoAlbero<tipo>* T;
 	NodoAlbero<tipo>* InserisciRicorsivo(tipo, NodoAlbero<tipo>*);
@@ -19,6 +18,8 @@ private:
 	int ContaNodiFoglia(int&, NodoAlbero<tipo>*);
 	bool Cerca(tipo, NodoAlbero<tipo>*);
 	string Converti(string&, NodoAlbero<tipo>*);
+	int ContaProfondita(NodoAlbero<tipo>*);
+	void Uguale(NodoAlbero<tipo>*);
 
 public:
 	Albero();
@@ -32,5 +33,7 @@ public:
 	bool Cerca(tipo);
 	void InserisciNnodi(int);
 	string Converti();
+	void operator =(Albero<tipo>);
+	int ContaProfondita();
 	~Albero();
 };
