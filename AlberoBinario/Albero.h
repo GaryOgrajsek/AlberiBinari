@@ -2,8 +2,13 @@
 #include "NodoAlbero.h"
 #include "NodoAlbero.cpp"
 #include<iostream>
+#include<string>
+using namespace std;
+//postorder F D E B G C A  INORDER D F B E A G C
 template <class tipo>
 class Albero{
+	friend bool AlberoUguale(Albero<tipo>, Albero<tipo>);
+	friend Albero<tipo> operator=(Albero<tipo>&, Albero<tipo>);
 private:
 	NodoAlbero<tipo>* T;
 	NodoAlbero<tipo>* InserisciRicorsivo(tipo, NodoAlbero<tipo>*);
@@ -12,7 +17,8 @@ private:
 	void Postorder(NodoAlbero<tipo>*);
 	int ContaNodi(int&, NodoAlbero<tipo>*);
 	int ContaNodiFoglia(int&, NodoAlbero<tipo>*);
-	//sovrapposizione =
+	bool Cerca(tipo, NodoAlbero<tipo>*);
+	string Converti(string&, NodoAlbero<tipo>*);
 
 public:
 	Albero();
@@ -23,6 +29,8 @@ public:
 	void InserisciRicorsivo(tipo);
 	int ContaNodi();
 	int ContaNodiFoglia();
+	bool Cerca(tipo);
+	void InserisciNnodi(int);
+	string Converti();
 	~Albero();
 };
-
