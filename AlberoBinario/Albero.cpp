@@ -5,10 +5,6 @@ template<class tipo>
 bool AlberoUguale(Albero<tipo> A1, Albero<tipo> A2) {
 	return(A1.Converti() == A2.Converti());
 }
-template<class tipo>
-Albero<tipo> operator =(Albero<tipo>& A1, Albero<tipo> A2) {
-	cout << "MACRON";
-}
 
 template <class tipo>
 Albero<tipo>::Albero() {
@@ -178,6 +174,43 @@ void Albero<tipo>::InserisciNnodi(int n) {
 		cout << "Numerino: ";
 		cin >> x;
 		InserisciRicorsivo(x);
+	}
+}
+
+template<class tipo>
+void Albero<tipo>::Uguale(NodoAlbero<tipo>* Taltro) {
+	if (Taltro != nullptr) {
+		InserisciRicorsivo(Taltro->GetInfo());
+		Uguale(Taltro->GetLeftLink());
+		Uguale(Taltro->GetRightLink());
+	}
+}
+
+template<class tipo>
+void Albero<tipo>::operator=(Albero<tipo> copia) {
+	Uguale(copia.T);
+}
+
+template<class tipo>
+int Albero<tipo>::ContaProfondita() {
+	return ContaProfondita(T);
+}
+
+template<class tipo>
+int Albero<tipo>::ContaProfondita(NodoAlbero<tipo>* T) {
+	if (T == nullptr) {
+		return 0;
+	}
+	else {
+		int ProfonditaSinistra = ContaProfondita(T->GetLeftLink());
+		int ProfonditaDestra = ContaProfondita(T->GetRightLink());
+
+		if (ProfonditaSinistra > ProfonditaDestra) {
+			return(ProfonditaSinistra + 1);
+		}
+		else {
+			return(ProfonditaDestra + 1);
+		}
 	}
 }
 
